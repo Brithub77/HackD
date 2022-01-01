@@ -27,7 +27,7 @@ HackD -- initial directory
 	-> Saved_Apps -- where unmodified backups of tivoapp binary files are 
      located
      
-  -> Saved_Kernels -- where unmodified backups of TiVo kernels are located
+  	-> Saved_Kernels -- where unmodified backups of TiVo kernels are located
   
 	-> source_video -- contains examples of videos extracted from hacked TiVos
   
