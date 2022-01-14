@@ -54,8 +54,8 @@ then
         # Set up the static variables for running on a TiVo
         SaveFile=/tvbin/tivoapp.tmp
         Archive=/tvbin/tivoapp.sav
-	TarBallDir=/busybox/bin
-	PatchDir=$TarBallDir/oztivoapp_patches
+		TarBallDir=/hack/bin
+		PatchDir=$TarBallDir/oztivoapp_patches
         HackFile=$PatchDir/"$sver"_patch
         Platform=TiVo
         # Change to the directory containing tivoapp

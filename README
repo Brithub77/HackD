@@ -1,4 +1,4 @@
-*** HackD v1.1 by Brithub77 ***
+*** HackD v1.2 by Brithub77 ***
 *** Everything you need in order to get your Series3 TiVo HackD ***
 
 USE AT YOUR OWN RISK! I WILL NOT BE HELD RESPONSIBLE IF YOUR BREAK YOUR TIVO.
@@ -8,8 +8,7 @@ INSTRUCTIONS FOR USE:
 
 1. Take the drive out of the TiVo and attach it to your computer.
 
-2. Run "HackD". It will automate the hacking process so that you won't
-have to do it yourself.
+2. Run "HackD". It will automate the hacking process so that you won't have to do it yourself.
 
 3. Run patch scripts if you'd like.
 
@@ -29,9 +28,9 @@ HackD -- initial directory
   -> tivoapp_patches -- software-specific patches for US tivoapps to enable 
      backdoors, disable encyrption, etc.
   -> bootpage -- sets boot parameters to TiVo 
-  -> busybox_AU.tar.gz -- busybox distro complete with all the necessary 
+  -> hack_AU.tar.gz -- busybox distro complete with all the necessary 
      hacks and utilities for AU/NZ TiVos
-  -> busybox_US.tar.gz -- busybox distro complete with all the necessary 
+  -> hack_US.tar.gz -- busybox distro complete with all the necessary 
      hacks and utilities for US TiVos
   -> get-password.sh -- the script in which you choose your own username and 
      password for logging in to the server
@@ -40,7 +39,13 @@ HackD -- initial directory
   -> hack_oztivoapp_TiVo -- natively patches AU/NZ tivoapps 
   -> hack_tivoapp_PC -- patches US tivoapps while the drive is attached to 
      the PC
+  -> hack_tivoapp_PC_11.0n.H1 -- patches US tivoapps (version 11.0n.H1) while
+	 the drive is attached to the PC
+  -> hack_tivoapp_PC_11.0n.K1 -- patches US tivoapps (version 11.0n.K1) while
+	 the drive is attached to the PC
   -> hack_tivoapp_TiVo -- natively patches US tivoapps
+  -> hack_tivoapp_TiVo_11.0n.H1 -- natively patches US tivoapps (version 11.0n.H1)
+  -> hack_tivoapp_TiVo_11.0n.K1 -- natively patches US tivoapps (version 11.0n.K1)
   -> HackD -- main script
   -> null-linuxrc.img.gz -- backup of the initrd (ROM) from a TiVo kernel
   -> rc.sysinit.author -- startup script that allows all hacks to run once 

@@ -54,8 +54,8 @@ then
         # Set up the static variables
         SaveFile=/tvbin/tivoapp.tmp
         Archive=/tvbin/tivoapp.sav
-	TarBallDir=/busybox/bin
-	PatchDir=$TarBallDir/tivoapp_patches
+		TarBallDir=/hack/bin
+		PatchDir=$TarBallDir/tivoapp_patches
         HackFile=$PatchDir/"$sver"_hacks.fil
         Platform=TiVo
         # Change to the directory containing tivoapp
@@ -77,7 +77,7 @@ echo Getting the hacking parameters for tivoapp
 fail=1
 while read line
 do
-        offset=$(( $(echo $line | cut -d" " -f1) - 0x00400000 ))
+        offset=$(($(echo $line | cut -d" " -f1) - 0x00400000))
         oldword=$(echo $line | cut -d" " -f2 | sed s'/"//g')
         newword=$(echo $line | cut -d" " -f3 | sed s'/"//g')
         echo $oldword $newword $offset
@@ -93,7 +93,7 @@ do
         # Check to make sure the bytes match
         if [[ "$testword" == "$oldword" ]]
         then
-                echo Updating tivoapp $( echo $line | cut -d" " -f4)
+                echo Updating tivoapp $(echo $line | cut -d" " -f4)
                 # Convert the string into a 4 byte number expression
                 escape="\x"
                 H1=${newword:0:2}
