@@ -18,7 +18,8 @@ _____________________________________________________________________________
 
 CONTENTS:
 
-HackD -- initial directory  
+HackD -- initial directory
+  -> .git -- assorted GitHub files for repository
   -> oztivoapp_patches -- software-specific patches for AU/NZ tivoapps to 
      enable backdoors, disable encyrption, etc.   
   -> Saved_Apps -- where unmodified backups of tivoapp binary files are 
@@ -40,9 +41,9 @@ HackD -- initial directory
   -> hack_tivoapp_PC -- patches US tivoapps while the drive is attached to 
      the PC
   -> hack_tivoapp_PC_11.0n.H1 -- patches US tivoapps (version 11.0n.H1) while
-	 the drive is attached to the PC
+     the drive is attached to the PC
   -> hack_tivoapp_PC_11.0n.K1 -- patches US tivoapps (version 11.0n.K1) while
-	 the drive is attached to the PC
+     the drive is attached to the PC
   -> hack_tivoapp_TiVo -- natively patches US tivoapps
   -> hack_tivoapp_TiVo_11.0n.H1 -- natively patches US tivoapps (version 11.0n.H1)
   -> hack_tivoapp_TiVo_11.0n.K1 -- natively patches US tivoapps (version 11.0n.K1)

@@ -40,7 +40,7 @@ if [ -a $Show_Msg ];
 then
 	H=0
 	W=0
-	Title="HackD-Version-1.1"
+	Title="HackD-Version-1.2"
 	Dialog="$Show_Msg --backtitle ${Title}"
 else
 	echo "Binary file dialog not found. Not showing dialog messsages..."
@@ -317,7 +317,7 @@ fi
 
 # Copy and extract TiVoWebPlus
 cd $TiVo
-if [ -a $TWP ]];
+if [[ -a $TWP ]];
 then
 	echo "Copying and extracting TiVoWebPlus..."
 	tar -xvzf $TWP.tgz
