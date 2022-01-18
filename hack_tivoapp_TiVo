@@ -3,7 +3,7 @@
 # Originally derived from the first version of Lrhorer's script with a similar name
 
 # This script applies patches to any tivoapp from a modified S3 US TiVo running 
-# software versions 11.0k through 11.0n.K1. 
+# software versions 11.0k to 11.0m. 
 
 # USE AT YOUR OWN RISK! I will not be held responsible if you break your TiVo.
 
@@ -54,8 +54,8 @@ then
         # Set up the static variables
         SaveFile=/tvbin/tivoapp.tmp
         Archive=/tvbin/tivoapp.sav
-		TarBallDir=/hack/bin
-		PatchDir=$TarBallDir/tivoapp_patches
+		HackBinDir=/hack/bin
+		PatchDir=$HackBinDir/tivoapp_patches
         HackFile=$PatchDir/"$sver"_hacks.fil
         Platform=TiVo
         # Change to the directory containing tivoapp
