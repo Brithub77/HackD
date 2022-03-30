@@ -113,12 +113,28 @@ ETC_DIR=/etc
 HACK_DIR=/hack
 # Set the bin directory inside of /hack
 HACKBIN_DIR=$HACK_DIR$BIN_DIR
+# Set backup_keys.sh
+BACKUP_KEYS=$HACKBIN_DIR/backup_keys.sh
+# Set the crond bianry file
+CROND=$HACKBIN_DIR/crond
+# Set the dbset file
+DBSET=$HACKBIN_DIR/dbset
 # Set the Dropbear SSH binary file
 SSH=$HACKBIN_DIR/dropbear
 # Set the TiVoFTPd binary file
 TIVOFTPD=$HACKBIN_DIR/tivoftpd
+# Set the EndPadPlus directory inside of /hack
+HACKEPP_DIR=$HACK_DIR/endpadplus
+# Set the EndPadPlus file
+ENDPAD=$HACKEPP_DIR/endpadplus.tcl
 # Set the etc directory inside of /hack
 HACKETC_DIR=$HACK_DIR$ETC_DIR
+# Set the crontabs directory inside of /hack/etc
+CRONTABS_DIR=$HACKETC_DIR/crontabs
+# Set the lib directory inside of /hack
+HACKLIB_DIR=$HACK_DIR/lib
+# Set the modules directory inside of /hack/lib
+HACKMODS_DIR=$HACKLIB_DIR/modules
 # Set the tvbin directory
 TVBIN_DIR=/tvbin
 # Set the var directory
@@ -148,7 +164,7 @@ show_msg "Starting Telnet on port"
 show_msg "23..."
 $TELNET 23 $BASH -login &
 
-# Start SSH (if set in the bootpage parameters or located in the hack directory)
+# Start SSH (if set in the bootpage parameters or located in $HACKBIN_DIR)
 if [[ $hacks  == *"ssh"* ]] || [[ -f $SSH ]] ; then
 	show_msg "Starting the Dropbear SSH"
 	show_msg "server..."
@@ -159,7 +175,7 @@ else
 	show_msg "Skipping..."
 fi
 
-# Start TiVoFTPd (if set in the bootpage parameters or located in the hack directory)
+# Start TiVoFTPd (if set in the bootpage parameters or located in $HACKBIN_DIR)
 if [[ $hacks  == *"ftp"* ]] || [[ -f $TIVOFTPD ]] ; then
 	show_msg "Starting the TiVoFTPd server"
 	show_msg "on port 21..."
@@ -186,6 +202,46 @@ if [[ $hacks  == *"mfs_ftp"* ]] || [[ -f $MFS_FTP ]] ; then
 else
 	show_msg "File mfs_ftp.tcl not found."
 	show_msg "Skipping..."
+fi
+
+# Start EndPadPlus (if located in $HACKEPP_DIR)
+if [[ -f $ENDPAD ]] ; then
+	show_msg "Starting EndPadPlus..."
+	$ENDPAD 2 13 -shd -nob2b -auto &
+else
+	echo "File endpadplus.tcl not found."
+	echo "Skipping..."
+fi
+
+# Start crond (if located in $HACKBIN_DIR)
+if [[ -f $CROND ]] ; then
+	show_msg "Starting crond"
+	$CROND -c $CRONTABS_DIR
+else
+	echo "File crond not found."
+        echo "Skipping..."
+fi
+
+# Set DialConfig (if dbset is located in $HACKBIN_DIR)
+if [[ -f $DBSET ]] ; then
+	show_msg "Setting DialConfig to $DialConfig"
+	$DBSET /State/PhoneConfig  DialConfig $DialConfig
+else
+	echo "File dbset not found."
+	echo "Skipping..."
+fi
+
+# Back up MFS Keyring (if backup_keys.sh is located in $HACKBIN_DIR)
+KEY_BACKUP=$HACKETC_DIR/mfskeys_${SerialNumber}_${SwSystem}.tar
+if [ ! -e ${KEY_BACKUP}.gz -a -x $BACKUP_KEYS ]; then
+	show_msg "Making a backup of the MFS Keyring"
+	mount -o remount,rw /
+	$BACKUP_KEYS ${KEY_BACKUP}
+	gzip ${KEY_BACKUP}
+	mount -o remount,ro /
+else
+	echo "File backup_keys.sh not found."
+	echo "Skipping..."
 fi
 
 # Disable the firewall
